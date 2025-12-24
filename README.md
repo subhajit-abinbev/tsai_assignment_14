@@ -124,6 +124,14 @@
 > That you to you,-- king death
 > To, then.'. he let the king;
 > With
+
+## Model Architecture
+- Token embedding layer followed by positional handling via rotary embeddings (RoPE).
+- 24 decoder blocks, each composed of:
+	- Multi-Head Latent Attention with 12 heads, 4 key/value heads, and 8 learnable latent tokens.
+	- Mixture-of-Experts feed-forward layer with 8 experts (top-2 gating, jitter, and loss-free balancing).
+	- Dual RMSNorm residual pathways for attention and feed-forward modules.
+- Final RMSNorm and tied linear head for vocabulary projection.
 	- Mixture-of-Experts feed-forward layer with 8 experts (top-2 gating, jitter, and loss-free balancing).
 	- Dual RMSNorm residual pathways for attention and feed-forward modules.
 - Final RMSNorm and tied linear head for vocabulary projection.
